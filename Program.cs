@@ -3,6 +3,7 @@
 
 using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
+using System.Net;
 using System.Runtime.InteropServices;
 using System.Text;
 using static System.Net.Mime.MediaTypeNames;
@@ -211,7 +212,7 @@ namespace SampleNamespace
 
             MonOrds monOrdsStruct = new()
             {
-                Id = 123,
+                Id = IPAddress.HostToNetworkOrder(123),
                 Value = "4.567",
                 Name = "SampleName"
             };
