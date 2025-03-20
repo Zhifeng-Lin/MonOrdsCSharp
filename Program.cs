@@ -18,7 +18,6 @@ namespace SampleNamespace
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
     public struct MonOrds
     {
-        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 4)]
         public int Id;                       // 4 bytes
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 10)]
         public string Value;                 // 10 bytes
