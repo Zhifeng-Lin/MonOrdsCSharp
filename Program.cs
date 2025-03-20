@@ -311,7 +311,6 @@ namespace SampleNamespace
         static void Main(string[] args)
         {
             ABXToolkitClass.Init(System.IO.Directory.GetCurrentDirectory());
-            ABXToolkitClass.Init(System.IO.Directory.GetCurrentDirectory());
             ABXToolkitClass.Start();
             ABXToolkitClass.AddListener();
             ABXToolkitClass.Login();
