@@ -277,24 +277,9 @@ namespace SampleNamespace
                                 if (IntPtr.Zero != abxTagValueItem) 
                                 {
                                     tagNo = ABXToolkitMethods.getTagNoByICABXTagValueItem(abxTagValueItem);
-                                    if (tagNo == 8) // 假設tagNo8 需要資料長度去帶出資料
-                                    {
-                                        // 實際取自上一個項目DataLen, 這邊假設情境要取得的是MonOrds.
-                                        ulong dataLength = (ulong)Marshal.SizeOf(typeof(MonOrds));
-                                        byte[] buffer = new byte[dataLength];
-                                        ABXToolkitMethods.getValueByICABXTagValueItem(abxTagValueItem, buffer, dataLength);
-                                        IntPtr ptr = Marshal.AllocHGlobal(buffer.Length);
-                                        Marshal.Copy(buffer, 0, ptr, buffer.Length);
-                                        MonOrds monOrds = Marshal.PtrToStructure<MonOrds>(ptr);
-                                        Marshal.FreeHGlobal(ptr);
-                                        Console.WriteLine($"ID: {monOrds.Id}, Value: {monOrds.Value}, Name: {monOrds.Name}");
-                                    }
-                                    else
-                                    {   // 正常取出
-                                        ptext = ABXToolkitMethods.getValueByICABXTagValueItem(abxTagValueItem, null, 0);
-                                        string tagContent = Marshal.PtrToStringAnsi(ptext)!;
-                                        Console.WriteLine($"tagNo: {tagNo}, value: {tagContent}");
-                                    }
+                                    ptext = ABXToolkitMethods.getValueByICABXTagValueItem(abxTagValueItem, null, 0);
+                                    string tagContent = Marshal.PtrToStringAnsi(ptext)!;
+                                    Console.WriteLine($"tagNo: {tagNo}, value: {tagContent}");
                                     ABXToolkitMethods.removeReferenceByICABXTagValueItem(abxTagValueItem);
                                 }
                             }
